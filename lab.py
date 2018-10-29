@@ -28,6 +28,7 @@ def calculates(numberSequence, network, name):
     return str(sums)
 
 
+# 处理数据文件
 with open('burglarnetwork.txt', 'r') as f:
     list1 = f.readlines()
 for i in range(0, len(list1)):
@@ -41,6 +42,7 @@ Network = {}
 for i in range(0, N):
     Network[list2[i]] = []
     # print Network
+# 保存01表
 Maps = [[0 for i in range(N)] for j in range(0, N)]
 # print Maps
 j = 0
@@ -58,7 +60,7 @@ list3 = [None] * N
 sums = 0
 sumOfRows = N + 2
 list2 = []
-# 遍历每一个元素
+# 遍历每一个节点的概率数据
 for i in range(0, N):
     # 遍历每一列
     for k in range(0, N):
@@ -85,6 +87,7 @@ for i in range(0, N):
             sumOfRows += 1
         Network[listName[i]] = list4
     sums = 0
+# 处理问题文件
 with open('burglarqueries.txt', 'r') as f:
     list1 = f.readlines()
 for i in range(0, len(list1)):
@@ -110,6 +113,7 @@ for i in range(0, pow(2, N)):
     temp = Maps[i][0]
     Maps[i][1] = calculates(temp.zfill(N), Network, listName)
 # print problemlist
+print Maps
 check = [0 for i in range(0, N)]
 # print check
 # print listName
@@ -137,6 +141,7 @@ for i in range(0, len(problemlist)):
     check = [0 for i in range(0, N)]
     results = 0
     flag = 0
+    # print s
     for k in range(0, pow(2, N)):
         for j in range(0, N):
             if cmp(s[j], '1') == 0 and cmp(s[j], Maps[k][0][j]) != 0:
@@ -144,4 +149,4 @@ for i in range(0, len(problemlist)):
         if flag == 0:
             results += float(Maps[k][1])
         flag = 0
-    print float(results)
+    # print float(results)
