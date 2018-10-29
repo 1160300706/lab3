@@ -113,18 +113,17 @@ for i in range(0, pow(2, N)):
     temp = Maps[i][0]
     Maps[i][1] = calculates(temp.zfill(N), Network, listName)
 # print problemlist
-print Maps
-check = [0 for i in range(0, N)]
-# print check
+# print Maps
+check = [2 for i in range(0, N)]
 # print listName
 # print Maps
 for i in range(0, len(problemlist)):
     list1 = problemlist[i]
     listTemp = ''.join(list(list1[0][0])[0:-1])
-    position = listName.index(listTemp)
+    positions = listName.index(listTemp)
     # print position
     #  print listTemp
-    check[position] = 1
+    # check[position] = 1
     for j in range(1, len(list1)):
         list2 = list1[j]
         listTemp = ''.join(list(list2[0][1:]))
@@ -133,20 +132,32 @@ for i in range(0, len(problemlist)):
         # print position
         if cmp(list2[1], 'true') == 0:
             check[position] = 1
+        else:
+            check[position] = 0
     check = [str(x) for x in check]
     # print check
     s = ''.join(check)
     number = int(s)
     # print number
-    check = [0 for i in range(0, N)]
+    check = [2 for i in range(0, N)]
     results = 0
+    results1 = 0
     flag = 0
     # print s
+    listresult = []
     for k in range(0, pow(2, N)):
         for j in range(0, N):
             if cmp(s[j], '1') == 0 and cmp(s[j], Maps[k][0][j]) != 0:
                 flag = 1
+            if cmp(s[j], '0') == 0 and cmp(s[j], Maps[k][0][j]) != 0:
+                flag = 1
         if flag == 0:
             results += float(Maps[k][1])
+            listresult.append(Maps[k])
         flag = 0
-    # print float(results)
+    # print listresult
+    for j in range(0, len(listresult)):
+        if cmp(listresult[j][0][positions], '1') == 0:
+            results1 += float(listresult[j][1])
+
+    print [results1 / results, 1 - results1 / results]
