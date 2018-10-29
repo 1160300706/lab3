@@ -29,6 +29,7 @@ def calculates(numberSequence, network, name):
 
 
 # 处理数据文件
+# with open('burglarnetwork2.txt', 'r') as f:
 with open('burglarnetwork.txt', 'r') as f:
     list1 = f.readlines()
 for i in range(0, len(list1)):
@@ -88,6 +89,7 @@ for i in range(0, N):
         Network[listName[i]] = list4
     sums = 0
 # 处理问题文件
+# with open('burglarqueries2.txt', 'r') as f:
 with open('burglarqueries.txt', 'r') as f:
     list1 = f.readlines()
 for i in range(0, len(list1)):
